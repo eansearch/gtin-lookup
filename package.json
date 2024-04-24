@@ -1,0 +1,31 @@
+{
+  "name": "gtin-lookup",
+  "version": "1.0.0",
+  "description": "Lookup GTIN, UPC, EAN or ISBN data using the API on ean-search.org",
+  "main": "gtin-lookup.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Relaxed Communications GmbH <info@relaxedcommunications.com>",
+  "license": "GPL",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/eansearch/gtin-lookup.git"
+  },
+  "keywords": [
+    "upc",
+    "database",
+    "upcdatabase",
+    "ean",
+    "bookland",
+    "product",
+    "codes"
+  ],
+  "bugs": {
+    "url": "https://github.com/eansearch/gtin-lookup/issues"
+  },
+  "dependencies": {
+    "request": "latest"
+  }
+}
+
