@@ -6,6 +6,11 @@ A Javascript module to lookup GTIN, EAN or ISBN codes using the API on ean-searc
 
 `npm install gtin-lookup`
 
+## Obtain an API key
+
+To use the module, you need an API access token from
+https://www.ean-search.org/ean-database-api.html
+
 ## Usage
 
 ```javascript
