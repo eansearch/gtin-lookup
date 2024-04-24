@@ -57,8 +57,8 @@ class GTINLookup {
 		this.apiCall(this.api + "&op=verify-checksum&ean=" + gtin, callback);
 	}
 
-	gtinBarcodeImage(gtin, callback) {
-		this.apiCall(this.api + "&op=barcode-image&ean=" + gtin, callback);
+	gtinBarcodeImage(gtin, width, height, callback) {
+		this.apiCall(this.api + "&op=barcode-image&ean=" + gtin + "&width=" + width + "&height=" + height, callback);
 	}
 
 }

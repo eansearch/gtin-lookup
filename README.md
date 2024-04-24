@@ -1,6 +1,6 @@
 # gtin-lookup
 
-A Javascript module to lookup GTIN, EAN or ISBN codes using the API on ean-search.org
+A Javascript module to lookup GTIN, EAN or ISBN codes using the API on https://www.ean-search.org
 
 ## Install
 
@@ -35,6 +35,7 @@ gtinLookup.gtinLookup(gtin, 1, function(response){
   }
 });
 
+// lookup book data using ISBN-10 or ISBN-13
 const isbn = "1119578884";
 gtinLookup.isbnLookup(isbn, function(response){
   if (!response.serverError) {
@@ -98,6 +99,7 @@ gtinLookup.gtinPrefixSearch("5099750442", 1, 0, function(response){
     }
 });
 
+// lookup the country where a GTIN barcode was registered
 gtinLookup.gtinIssuingCountryLookup(gtin, function(response){
   if (!response.serverError) {
     console.log("gtinIssuingCountryLookup()");
@@ -107,6 +109,7 @@ gtinLookup.gtinIssuingCountryLookup(gtin, function(response){
   }
 });
 
+// verify the checksum of a GTIN
 gtinLookup.gtinVerifyChecksum(gtin, function(response){
   if (!response.serverError) {
     console.log("gtinVerifyChecksum()");
@@ -116,7 +119,8 @@ gtinLookup.gtinVerifyChecksum(gtin, function(response){
   }
 });
 
-gtinLookup.gtinBarcodeImage(gtin, function(response){
+// generate a PNG barcode image for a GTIN
+gtinLookup.gtinBarcodeImage(gtin, width, height, function(response){
   if (!response.serverError) {
     console.log("gtinBarcode()");
       console.log("Base64 encoded PNG image of GTIN " + gtin + " barcode: " + response.product[0].barcode);

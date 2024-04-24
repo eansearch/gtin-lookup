@@ -1,6 +1,6 @@
 {
   "name": "gtin-lookup",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Lookup GTIN, UPC, EAN or ISBN data using the API on ean-search.org",
   "main": "gtin-lookup.js",
   "scripts": {
@@ -13,13 +13,18 @@
     "url": "git+https://github.com/eansearch/gtin-lookup.git"
   },
   "keywords": [
+    "gtin",
+    "ean",
+    "isbn",
     "upc",
     "database",
     "upcdatabase",
-    "ean",
+    "ean-13",
+    "isbn-10",
+    "isbn-13",
     "bookland",
     "product",
-    "codes"
+    "barcode"
   ],
   "bugs": {
     "url": "https://github.com/eansearch/gtin-lookup/issues"
@@ -27,5 +32,5 @@
   "dependencies": {
     "request": "latest"
   },
-  "homepage": "https://github.com/eansearch/gtin-lookup#readme"
+  "homepage": "https://www.ean-search.org/ean-database-api.html"
 }
