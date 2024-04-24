@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Relaxed Communications GmbH <info@relaxedcommunications.com>",
-  "license": "GPL",
+  "license": "GPL-3.0-or-later",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/eansearch/gtin-lookup.git"
@@ -26,6 +26,6 @@
   },
   "dependencies": {
     "request": "latest"
-  }
+  },
+  "homepage": "https://github.com/eansearch/gtin-lookup#readme"
 }
-
