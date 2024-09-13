@@ -120,6 +120,8 @@ gtinLookup.gtinVerifyChecksum(gtin, function(response){
 });
 
 // generate a PNG barcode image for a GTIN
+var width = 200; // PNG width
+var height = 100; // PNG height
 gtinLookup.gtinBarcodeImage(gtin, width, height, function(response){
   if (!response.serverError) {
     console.log("gtinBarcode()");
