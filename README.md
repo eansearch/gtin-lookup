@@ -50,11 +50,27 @@ gtinLookup.isbnLookup(isbn, function(response){
     }
 });
 
-// search for product name, prefer English (1)
+// search for product name (exact match), prefer English (1)
 let name = "Bananaboat";
 gtinLookup.gtinSearch(name, 1, function(response){
   if (!response.serverError) {
     console.log("gtinSearch()");
+    if (response.product.productlist != undefined) {
+      for (let i = 0; i < response.product.productlist.length; i++) {
+        console.log(response.product.productlist[i].ean + " is " + response.product.productlist[i].name);
+      }
+    } else {
+        console.log("Name " + name + " not found in database");
+    }
+    } else {
+      console.log('Server error: ' + resp.statusCode); 
+    }
+});
+
+// search for product with a similar name
+gtinLookup.gtinSimilarSearch("Apple iPhone 16GB robust", 1, function(response){
+  if (!response.serverError) {
+    console.log("gtinSimilarSearch()");
     if (response.product.productlist != undefined) {
       for (let i = 0; i < response.product.productlist.length; i++) {
         console.log(response.product.productlist[i].ean + " is " + response.product.productlist[i].name);
