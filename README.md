@@ -26,7 +26,8 @@ gtinLookup.gtinLookup(gtin, 1, function(response){
   if (!response.serverError) {
     console.log("gtinLookup()");
     if (response.product != undefined) {
-        console.log("GTIN " + gtin + " is " + response.product[0].name + " category: " + response.product[0].categoryName);
+        console.log("GTIN " + gtin + " is " + response.product[0].name + " category: " + response.product[0].categoryName
+		+ " Google category " + response.product[0].googleCategoryId);
     } else {
         console.log("GTIN " + gtin + " not found in database");
     }
