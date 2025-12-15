@@ -1,5 +1,12 @@
 "use strict";
-
+/*
+ * A Javascript module to lookup GTIN, EAN or ISBN codes using the API on ean-search.org
+ * https://www.ean-search.org/ean-database-api.html
+ *
+ * (c) 2024 - 2025 Relaxed Communications GmBH, <info@relaxedcommunications.com>
+ *
+ * License: GPL 3.0
+*/
 const MAX_API_RETIES = 5;
 var request = require('request');
 
