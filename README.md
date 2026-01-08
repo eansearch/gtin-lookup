@@ -142,9 +142,7 @@ var height = 100; // PNG height
 gtinLookup.gtinBarcodeImage(gtin, width, height, function(response){
   if (!response.serverError) {
     console.log("gtinBarcode()");
-      console.log("Base64 encoded PNG image of GTIN " + gtin + " barcode: " + response.product[0].barcode);
-  } else {
-      console.log('Server error: ' + resp.statusCode); 
+    console.log("HTML: <img src=\"data:image/png;base64," + response.product[0].barcode + "\">");
   }
 });
 
