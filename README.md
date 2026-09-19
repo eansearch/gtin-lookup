@@ -116,6 +116,49 @@ gtinLookup.gtinPrefixSearch("5099750442", 1, 0, function(response){
     }
 });
 
+// find the Amazon ASIN for a GTIN, and the GTIN for an ASIN
+gtinLookup.gtinFindAsin("9781119578888", function(response){
+  if (!response.serverError) {
+    console.log("gtinFindAsin()");
+    if (response.product[0].asin != undefined) {
+      const asin = response.product[0].asin;
+      console.log("ASIN is " + asin);
+      gtinLookup.asinFindGtin(asin, function(response){
+        if (!response.serverError && response.product[0].ean != undefined) {
+          console.log("asinFindGtin()");
+          console.log("ASIN " + asin + " is GTIN " + response.product[0].ean);
+        }
+      });
+    } else {
+        console.log("No ASIN found for this GTIN");
+    }
+  } else {
+      console.log('Server error: ' + response.statusCode);
+  }
+});
+
+// find the Library of Congress control number (LCCN) for a GTIN, and the GTIN for an LCCN
+// (there can be several GTINs for one LCCN, you get the first one found)
+gtinLookup.gtinFindLccn("9781119578888", function(response){
+  if (!response.serverError) {
+    console.log("gtinFindLccn()");
+    if (response.product[0].lccn != undefined) {
+      const lccn = response.product[0].lccn;
+      console.log("LCCN is " + lccn);
+      gtinLookup.lccnFindGtin(lccn, function(response){
+        if (!response.serverError && response.product[0].ean != undefined) {
+          console.log("lccnFindGtin()");
+          console.log("LCCN " + lccn + " is GTIN " + response.product[0].ean);
+        }
+      });
+    } else {
+        console.log("No LCCN found for this GTIN");
+    }
+  } else {
+      console.log('Server error: ' + response.statusCode);
+  }
+});
+
 // lookup the country where a GTIN barcode was registered
 gtinLookup.gtinIssuingCountryLookup(gtin, function(response){
   if (!response.serverError) {

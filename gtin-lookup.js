@@ -3,11 +3,12 @@
  * A Javascript module to lookup GTIN, EAN or ISBN codes using the API on ean-search.org
  * https://www.ean-search.org/ean-database-api.html
  *
- * (c) 2024 - 2025 Relaxed Communications GmBH, <info@relaxedcommunications.com>
+ * (c) 2024 - 2026 Relaxed Communications GmBH, <info@relaxedcommunications.com>
  *
  * License: GPL 3.0
 */
 const MAX_API_RETIES = 5;
+const USER_AGENT = 'js-eansearch/1.2';
 var request = require('request');
 
 function sleep(ms) {
@@ -15,7 +16,7 @@ function sleep(ms) {
 }
 
 async function apiCall(url, callback, tries = 1) {
-	request(url, function(err, response, body){
+	request({ url: url, headers: { 'User-Agent': USER_AGENT } }, function(err, response, body){
 		var resp = {};
 		if (!err) {
 			resp.statusCode = response.statusCode; 
@@ -30,6 +31,9 @@ async function apiCall(url, callback, tries = 1) {
 				} catch (e) {
 					resp.serverError = true;
 				}
+				callback(resp);
+			} else {
+				resp.serverError = true; // out of retries on 429, or any other HTTP error
 				callback(resp);
 			}
 		} else {
@@ -63,6 +67,22 @@ class GTINLookup {
 
 	gtinCategorySearch(name, categoryCode, lang, callback) {
 		apiCall(this.api + "&op=category-search&name=" + encodeURI(name) + "&category=" + categoryCode + "&language=" + lang, callback);
+	}
+
+	gtinFindAsin(gtin, callback) {
+		apiCall(this.api + "&op=asin-for-ean-lookup&ean=" + gtin, callback);
+	}
+
+	asinFindGtin(asin, callback) {
+		apiCall(this.api + "&op=ean-for-asin-lookup&asin=" + encodeURIComponent(asin), callback);
+	}
+
+	gtinFindLccn(gtin, callback) {
+		apiCall(this.api + "&op=lccn-for-ean-lookup&ean=" + gtin, callback);
+	}
+
+	lccnFindGtin(lccn, callback) {
+		apiCall(this.api + "&op=ean-for-lccn-lookup&lccn=" + encodeURIComponent(lccn), callback);
 	}
 
 	gtinPrefixSearch(prefix, lang, page, callback) {
