@@ -1,6 +1,6 @@
 {
   "name": "gtin-lookup",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "description": "Lookup GTIN, UPC, EAN or ISBN data using the API on ean-search.org",
   "main": "gtin-lookup.js",
   "files": ["gtin-lookup.js", "README.md", "LICENSE"],
